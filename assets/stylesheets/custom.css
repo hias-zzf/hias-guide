@@ -480,3 +480,16 @@
   max-width: 420px;
   width: 100%;
 }
+
+/* 右侧目录：按标题层级清晰缩进 */
+.md-nav--secondary .md-nav__item .md-nav__list {
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+  margin-left: 0.4rem;
+  padding-left: 0.8rem;
+}
+
+/* 左侧导航：嵌套层级加引导线，与右侧目录风格一致 */
+.md-nav--primary .md-nav__item .md-nav__list {
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+  padding-left: 0.5rem;
+}
