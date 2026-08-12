@@ -16,6 +16,8 @@ from pathlib import Path
 
 REPLACEMENTS: list[tuple[str, str]] = []
 DROP_SECTIONS = ["## 联系方式"]
+# 仅对经验贴生效：删除「## 联系方式」之后的内容，避免公开个人联系方式
+DROP_SECTIONS_ONLY_IN = "上岸经验分享"
 
 _LINK_RE = re.compile(r"\[([^\]]*)\]\(([^)]*)\)")
 
@@ -50,9 +52,11 @@ def main(docs_dir: str) -> None:
         text, placeholder = protect_links(original)
         for old, new in REPLACEMENTS:
             text = text.replace(old, new)
-        for section in DROP_SECTIONS:
-            if section in text:
-                text = text.split(section)[0].rstrip() + "\n"
+        # 「## 联系方式」删除逻辑仅作用于经验贴，避免误删结构化页面的官方联系方式
+        if DROP_SECTIONS_ONLY_IN in md.as_posix():
+            for section in DROP_SECTIONS:
+                if section in text:
+                    text = text.split(section)[0].rstrip() + "\n"
         text = restore_links(text, placeholder)
         if text != original:
             md.write_text(text, encoding="utf-8")
