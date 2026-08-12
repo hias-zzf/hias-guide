@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Inject auto-generated experience cards into the built homepage."""
+"""Inject auto-generated experience cards into the built homepage / 简介 landing."""
 
+import os
 import re
 import sys
 from pathlib import Path
 from urllib.parse import quote
 
 
-def card_for(md_file: Path) -> str:
+def card_for(md_file: Path, prefix: str) -> str:
     text = md_file.read_text(encoding="utf-8")
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     title = md_file.stem
@@ -20,7 +21,7 @@ def card_for(md_file: Path) -> str:
             summary = cleaned
             break
     summary = summary[:64] + ("..." if len(summary) > 64 else "")
-    href = f"上岸经验分享/{quote(md_file.stem)}/"
+    href = f"{prefix}/{quote(md_file.stem)}/"
     return (
         '<a class="isc-exp-card" href="' + href + '">'
         '<span class="isc-tag">经验</span>'
@@ -36,12 +37,14 @@ def main(homepage: Path, experiences_dir: Path) -> None:
     if marker not in html:
         return
 
+    # 卡片链接相对于目标页面所在目录，保证首页与 简介/ 均可复用
+    prefix = os.path.relpath(experiences_dir, homepage.parent).replace("\\", "/")
     cards = []
     if experiences_dir.exists():
         for md in sorted(experiences_dir.glob("*.md")):
-            if md.name == "README.md":
+            if md.name in ("README.md", "index.md"):
                 continue
-            cards.append(card_for(md))
+            cards.append(card_for(md, prefix))
 
     if cards:
         body = "\n".join(cards)
@@ -52,7 +55,8 @@ def main(homepage: Path, experiences_dir: Path) -> None:
             flags=re.S,
         )
     homepage.write_text(html, encoding="utf-8")
-    print(f"首页经验卡片已更新，共 {len(cards)} 篇。")
+    print(f"经验卡片已更新，共 {len(cards)} 篇。")
+    return prefix
 
 
 if __name__ == "__main__":

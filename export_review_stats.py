@@ -14,7 +14,7 @@ import pdfplumber
 
 ROOT = Path(__file__).resolve().parent
 SRC = Path(r"D:\codex program\pdf\复试生源统计")
-OUT = ROOT / "复试准备" / "26年复试录取情况.md"
+OUT = ROOT / "智能学院" / "复试准备" / "26年复试录取情况.md"
 IMG_DIR = ROOT / "overrides" / "assets" / "images"
 
 AI_FILE = "HIAS_26_AI复试统计.pdf"
@@ -157,15 +157,15 @@ def main() -> None:
             "",
             "> 数据依据《HIAS_26_AI复试统计》《HIAS_26_CS复试统计》整理，仅保留拟录取考生，以官方公示为准。",
             "",
-            "![复试生源统计](../assets/images/review-source-2026.png)",
+            "![复试生源统计](../../assets/images/review-source-2026.png)",
             "",
             "## 数据曲线",
             "",
-            "![AI 成绩曲线](../assets/images/review-ai-curve.png)",
+            "![AI 成绩曲线](../../assets/images/review-ai-curve.png)",
             "",
-            "![CS 成绩曲线](../assets/images/review-cs-curve.png)",
+            "![CS 成绩曲线](../../assets/images/review-cs-curve.png)",
             "",
-            "![AI 与 CS 均分对比](../assets/images/review-avg-compare.png)",
+            "![AI 与 CS 均分对比](../../assets/images/review-avg-compare.png)",
             "",
             "## AI 专业复试统计",
             "",
