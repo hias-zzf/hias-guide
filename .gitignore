@@ -1,0 +1,9 @@
+.venv/
+site/
+docs_src/
+.cache/
+.preview/
+docs-old/
+__pycache__/
+*.pyc
+.DS_Store

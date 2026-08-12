@@ -1,0 +1,99 @@
+site_name: 国科大杭高智能学院考研报考指南
+site_description: 非官方公益报考指南，汇总杭高智能学院报考、复试、培养与导师信息
+docs_dir: docs_src
+site_dir: site
+theme:
+  name: material
+  language: zh
+  font: false
+  custom_dir: overrides
+  icon:
+    logo: material/school
+  favicon: assets/images/favicon.svg
+  features:
+  - navigation.instant
+  - navigation.tracking
+  - navigation.top
+  - navigation.footer
+  - search.suggest
+  - search.highlight
+  - content.code.copy
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/weather-night
+      name: 切换深色模式
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/weather-sunny
+      name: 切换浅色模式
+plugins:
+- search:
+    lang:
+    - zh
+    - en
+hooks:
+- hooks/homepage_toc.py
+extra_css:
+- assets/stylesheets/custom.css
+markdown_extensions:
+- admonition
+- attr_list
+- md_in_html
+- toc:
+    permalink: true
+- pymdownx.details
+- pymdownx.superfences
+nav:
+- 首页: index.md
+- 初试准备:
+  - AI与体系对比: 初试准备/AI与体系对比.md
+  - 初试报考指南: 初试准备/初试报考指南.md
+  - 常见问题: 初试准备/常见问题.md
+  - 跨考边界: 初试准备/跨考边界.md
+- 复试准备:
+  - 26年复试录取情况: 复试准备/26年复试录取情况.md
+  - 培养与生活: 复试准备/培养与生活.md
+  - 复试考核指南: 复试准备/复试考核指南.md
+  - 复试难度: 复试准备/复试难度.md
+  - 学硕代招: 复试准备/学硕代招.md
+  - 导师与就业: 复试准备/导师与就业.md
+  - 毕业与转博: 复试准备/毕业与转博.md
+  - 生源与调剂: 复试准备/生源与调剂.md
+  - 联系导师: 复试准备/联系导师.md
+  - 补助与费用: 复试准备/补助与费用.md
+- 上岸经验分享:
+  - 26 985 真三无cs390: 上岸经验分享/26 985 真三无cs390.md
+  - 26 985科班 AI 397  复试90+经验贴: 上岸经验分享/26 985科班 AI 397  复试90+经验贴.md
+  - 26 985网安专业 CS 392经验贴: 上岸经验分享/26 985网安专业 CS 392经验贴.md
+  - 26 ai科班 374经验贴: 上岸经验分享/26 ai科班 374经验贴.md
+  - 26 cs 初试372 一战上岸杭高: 上岸经验分享/26 cs 初试372 一战上岸杭高.md
+  - 26AI391经验贴: 上岸经验分享/26AI391经验贴.md
+  - 26AI400+经验贴: 上岸经验分享/26AI400+经验贴.md
+  - 26AI421分经验贴: 上岸经验分享/26AI421分经验贴.md
+  - 26AI中2一战上岸经验贴: 上岸经验分享/26AI中2一战上岸经验贴.md
+  - 26AI跨考经验贴: 上岸经验分享/26AI跨考经验贴.md
+  - 26双非科班384AI简略经验贴: 上岸经验分享/26双非科班384AI简略经验贴.md
+  - AI初试417 小镇做题家打法: 上岸经验分享/AI初试417 小镇做题家打法.md
+  - 一战杭高ai417上岸的超长经验帖: 上岸经验分享/一战杭高ai417上岸的超长经验帖.md
+  - 二战中心学硕复仇杭高: 上岸经验分享/二战中心学硕复仇杭高.md
+  - 二本弱基础侥幸通关杭高AI: 上岸经验分享/二本弱基础侥幸通关杭高AI.md
+  - 初试402一战上岸杭高ai: 上岸经验分享/初试402一战上岸杭高ai.md
+  - 杭高CS蛄蛹上岸碎碎念: 上岸经验分享/杭高CS蛄蛹上岸碎碎念.md
+  - 迷子的极差背景三无二战跨考上岸经验贴: 上岸经验分享/迷子的极差背景三无二战跨考上岸经验贴.md
+- 投稿模板: 经验分享投稿模板.md
+- 贡献者名单: CONTRIBUTORS.md
+- 免责声明: 免责声明.md
+extra:
+  generator: false
+  social:
+  - icon: material/earth
+    name: 杭高院官网
+    link: http://hias.ucas.ac.cn/
+copyright: 非官方公益指南 · 内容仅供参考，请以官方发布为准
