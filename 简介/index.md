@@ -9,8 +9,7 @@
 </div>
 
 <div class="guide-stats">
-  <div class="guide-stat guide-stat--compact"><b>360/315/330</b><span>AI智能/物光 一志愿复试线</span></div>
-  <div class="guide-stat"><b>335</b><span>CS 一志愿复试线</span></div>
+  <div class="guide-stat"><b>315</b><span>26年408最低分数线</span></div>
   <div class="guide-stat"><b>570</b><span>专硕招生计划</span></div>
   <div class="guide-stat"><b>A+</b><span>国科大计算机学科评估</span></div>
   <div class="guide-stat"><b>4.44万+</b><span>研一补助每年</span></div>
@@ -20,6 +19,8 @@
 <p class="guide-intro">欢迎来到<b>国科大杭州高等研究院（杭高院）报考与学习指南</b>，一个由考生志愿维护的非官方公益站点，旨在为报考杭高院的同学提供从报考、复试到培养生活的全面参考。</p>
 
 <p class="guide-note">本站内容持续整理中，搜索不到的栏目会留空并标注「待补充」。欢迎各位同学补充修正，投稿请参考 <a href="经验分享投稿模板/">经验分享投稿模板</a>，贡献请查看 <a href="CONTRIBUTORS/">贡献者名单</a>。</p>
+
+## 为什么选择杭高院 {: .guide-visually-hidden }
 
 <section class="guide-section">
   <div class="guide-section__head">
@@ -60,6 +61,21 @@
   </div>
 </section>
 
+
+??? question "研究生补贴这么高，是由哪些部分组成的？"
+    - 国家助学金：`600/月`（2/8月不发）
+    - 中科院级补贴：`400/月`（2/8月不发）
+    - 杭高院（杭州市级）：`700/月` 
+    - 导师（工作室/组级）`1500/月`
+    - **此外研一统一发放 `8000` 元补贴抵消学费**
+
+    所以算下来放假2个月发 `2200`，平时每月发 `3200`。这是低保基础工资，如果进组打工或者使用其它手段，可以获得更高的报酬。
+    
+    **研二会跟随导师到具体的研究所里，补贴也会随之变化**
+
+
+## 高起点、小而精的国科大直属二级学院 {: .guide-visually-hidden }
+
 <section class="guide-section">
   <div class="guide-section__head">
     <span class="guide-section__kicker">杭高院概况</span>
@@ -99,6 +115,8 @@
   </div>
 </section>
 
+## 重点实验室与师资 {: .guide-visually-hidden }
+
 <section class="guide-section">
   <div class="guide-section__head">
     <h2>重点实验室与师资</h2>
@@ -113,6 +131,8 @@
   <p>通过岗位聘用吸纳包括院士在内的高层次人才 <b>253 名</b>；引进国家级领军人才、四青、优青等全职教学科研人员 <b>182 名</b>。</p>
 </section>
 
+## 2026 年报考规模 {: .guide-visually-hidden }
+
 <section class="guide-section">
   <div class="guide-section__head">
     <h2>2026 年报考规模</h2>
@@ -122,6 +142,8 @@
   <p>学术型硕士除「071009 细胞生物学」「071010 生物化学与分子生物学」「0710J3 生物信息学」「080901 物理电子学」外挂靠各承办单位招生。</p>
   <p>各学院 2026 年一志愿复试分数线可参考 <a href="../智能学院/复试准备/26年复试录取情况/">复试录取情况</a> 及杭高院官网发布的信息。</p>
 </section>
+
+## 报考全流程，一篇讲清 {: .guide-visually-hidden }
 
 <section class="guide-section" id="核心指南">
   <div class="guide-section__head">
@@ -168,6 +190,8 @@
   </div>
 </section>
 
+## 想考哪个学院，直接点 {: .guide-visually-hidden }
+
 <section class="guide-section">
   <div class="guide-section__head">
     <h2>想考哪个学院，直接点</h2>
@@ -197,6 +221,8 @@
   </div>
 </section>
 
+## 在杭高院读研是什么体验 {: .guide-visually-hidden }
+
 <section class="guide-section">
   <div class="guide-section__head">
     <h2>在杭高院读研是什么体验</h2>
@@ -206,6 +232,8 @@
     <li>补助与费用（研一/进组后）→ <a href="补助与费用/">补助与费用</a></li>
   </ul>
 </section>
+
+## 官方信息入口 {: .guide-visually-hidden }
 
 <section class="guide-section">
   <div class="guide-section__head">
@@ -219,8 +247,10 @@
   </ul>
 </section>
 
+## 上岸经验分享 {: .guide-visually-hidden }
+
 <div class="guide-experience-head">
-  <h2 id="上岸经验分享">上岸经验分享</h2>
+  <h2>上岸经验分享</h2>
   <p>来自不同背景上岸同学的真实备考故事，持续征集中。投稿前请先阅读 <a href="经验分享投稿模板/">经验分享投稿模板</a>。</p>
 </div>
 

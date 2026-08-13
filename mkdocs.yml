@@ -86,7 +86,7 @@ markdown_extensions:
     alternate_style: true
 nav:
 - 简介:
-  - 简介: 简介/index.md
+  - 整体介绍: 简介/index.md
   - 培养与生活: 简介/培养与生活.md
   - 补助与费用: 简介/补助与费用.md
   - 经验分享投稿模板: 简介/经验分享投稿模板.md
