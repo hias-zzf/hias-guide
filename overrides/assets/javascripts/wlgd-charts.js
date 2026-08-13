@@ -72,6 +72,42 @@
     };
   }
 
+  function optionTrendScore(d) {
+    return {
+      title: { text: '历年分数线与拟录取平均分', left: 'center', textStyle: { fontSize: 15 } },
+      color: ['#DD8452', '#4C72B0', '#FDB462', '#6BAED6'],
+      tooltip: { trigger: 'axis' },
+      legend: {
+        data: ['智能光电 复试线', '小卫星联培 复试线', '智能光电 拟录取平均分', '小卫星联培 拟录取平均分'],
+        top: 32
+      },
+      grid: { left: 60, right: 30, top: 80, bottom: 45 },
+      xAxis: { type: 'category', data: d.categories },
+      yAxis: { type: 'value', name: '分数线', min: 300, max: 370, interval: 10 },
+      series: [
+        { name: '智能光电 复试线', type: 'line', data: d.znLine, smooth: true, symbol: 'circle', symbolSize: 7, lineStyle: { width: 2.5 }, connectNulls: false },
+        { name: '小卫星联培 复试线', type: 'line', data: d.wxLine, smooth: true, symbol: 'circle', symbolSize: 7, lineStyle: { width: 2.5 }, connectNulls: false },
+        { name: '智能光电 拟录取平均分', type: 'line', data: d.znAvg, smooth: true, symbol: 'circle', symbolSize: 7, lineStyle: { width: 2, type: 'dashed' }, connectNulls: false },
+        { name: '小卫星联培 拟录取平均分', type: 'line', data: d.wxAvg, smooth: true, symbol: 'circle', symbolSize: 7, lineStyle: { width: 2, type: 'dashed' }, connectNulls: false }
+      ]
+    };
+  }
+
+  function optionTrendCount(d) {
+    return {
+      title: { text: '历年招生录取人数对比', left: 'center', textStyle: { fontSize: 15 } },
+      color: ['#4C72B0', '#DD8452'],
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      legend: { data: ['复试人数', '拟录取人数'], top: 32 },
+      grid: { left: 60, right: 30, top: 70, bottom: 45 },
+      xAxis: { type: 'category', data: d.categories },
+      yAxis: { type: 'value', name: '人数', min: 0 },
+      series: [
+        { name: '复试人数', type: 'bar', data: d.fushi, barWidth: 24 },
+        { name: '拟录取人数', type: 'bar', data: d.niqu, barWidth: 24 }
+      ]
+    };
+  }
   function disposeAll() {
     for (var k in instances) {
       try { instances[k].dispose(); } catch (e) {}
@@ -104,11 +140,33 @@
       disposeAll();
       return true;
     }
-    renderOne('wlgd-admission', optionAdmission(data.admission));
-    renderOne('wlgd-avg', optionAvg(data.avg));
-    renderOne('wlgd-02-combo', optionCombo(data.combo02, '02 方向初试总分分段统计'));
-    renderOne('wlgd-03-combo', optionCombo(data.combo03, '03 方向初试总分分段统计'));
-    return !!(instances['wlgd-admission'] && instances['wlgd-avg'] && instances['wlgd-02-combo'] && instances['wlgd-03-combo']);
+    var defs = [
+      ['wlgd-admission', data.admission, null],
+      ['wlgd-avg', data.avg, null],
+      ['wlgd-02-combo', data.combo02, '02 方向初试总分分段统计'],
+      ['wlgd-03-combo', data.combo03, '03 方向初试总分分段统计'],
+      ['wlgd-25-combo', data.combo25, '02 方向初试总分分段统计（25 年）'],
+      ['wlgd-trend-score', data.trendScore, null],
+      ['wlgd-trend-count', data.trendCount, null]
+    ];
+    var allReady = true;
+    for (var i = 0; i < defs.length; i++) {
+      var id = defs[i][0];
+      var d = defs[i][1];
+      var title = defs[i][2];
+      var el = document.getElementById(id);
+      if (!el) continue;
+      if (!d) { allReady = false; continue; }
+      var option;
+      if (id === 'wlgd-admission') { option = optionAdmission(d); }
+      else if (id === 'wlgd-avg') { option = optionAvg(d); }
+      else if (id === 'wlgd-trend-score') { option = optionTrendScore(d); }
+      else if (id === 'wlgd-trend-count') { option = optionTrendCount(d); }
+      else { option = optionCombo(d, title); }
+      renderOne(id, option);
+      if (!instances[id]) { allReady = false; }
+    }
+    return allReady;
   }
 
   var retryHandle = null;
