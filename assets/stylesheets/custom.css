@@ -493,3 +493,14 @@
   border-left: 1px solid var(--md-default-fg-color--lightest);
   padding-left: 0.5rem;
 }
+
+/* 拟录取名单表格：斑马纹行色 */
+table.isc-score-table {
+  width: 100%;
+}
+table.isc-score-table tbody tr:nth-child(even) {
+  background-color: var(--md-default-bg-color--lighter);
+}
+table.isc-score-table tbody tr:hover {
+  background-color: var(--md-default-fg-color--lightest);
+}
