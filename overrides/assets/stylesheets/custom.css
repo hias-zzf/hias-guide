@@ -1297,3 +1297,35 @@ blockquote.page-copyright.md-page-meta i.md-icon {
 .md-page-meta a {
   text-decoration: none;
 }
+/* Footer social links: show the name next to the icon */
+.md-social__link--named {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
+  height: auto;
+  line-height: 1;
+  padding: 0.1rem 0.2rem;
+  width: auto;
+}
+
+.md-social__icon {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+}
+
+.md-social__link--named svg {
+  height: 0.9rem;
+  width: 0.9rem;
+  flex: none;
+}
+
+.md-social__name {
+  color: var(--md-footer-fg-color--light);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.md-social__link--named:hover .md-social__name {
+  color: var(--md-footer-fg-color);
+}

@@ -153,4 +153,7 @@ extra:
   - icon: material/earth
     name: 杭高院官网
     link: http://hias.ucas.ac.cn/
+  - icon: material/school
+    name: 中国科学院大学官网
+    link: https://www.ucas.ac.cn/
 copyright: 非官方公益指南 · 内容仅供参考，请以官方发布为准

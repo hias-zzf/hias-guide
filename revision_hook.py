@@ -262,14 +262,9 @@ def _contributors(repo_path: str, repo_url: str, branch: str) -> list[dict]:
         else {}
     )
 
-    seen: set[tuple[str, str]] = set()
+    seen: set[str] = set()
     result: list[dict] = []
     for name, email in _local_authors(repo_path):
-        key = (name, email)
-        if key in seen:
-            continue
-        seen.add(key)
-
         username = _github_username(email)
         if not username and email and email.lower() in remote_map:
             username = remote_map[email.lower()]
@@ -278,11 +273,14 @@ def _contributors(repo_path: str, repo_url: str, branch: str) -> list[dict]:
         if not username:
             username = _github_profile_login(name)
 
-        if username:
-            name = username
+        display = username or name
+        key = display.lower()
+        if key in seen:
+            continue
+        seen.add(key)
         result.append(
             {
-                "name": name,
+                "name": display,
                 "url": f"https://github.com/{username}" if username else "",
             }
         )
