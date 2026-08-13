@@ -43,7 +43,8 @@ NAV_ORDER: dict[str, list[str]] = {
         "上岸经验分享",
     ],
     "智能学院/招生专业": ["index.md", "085404计算机技术.md", "085410人工智能.md", "085408光电信息工程.md"],
-    "物理与光电工程学院": ["整体介绍.md", "招生专业"],
+    "物理与光电工程学院": ["整体介绍.md", "招生专业", "拟录取信息"],
+    "物理与光电工程学院/拟录取信息": ["整体趋势", "25年拟录取信息", "26年拟录取信息"],
 }
 
 
@@ -65,7 +66,11 @@ def entries_for(folder: Path, prefix: str) -> list[dict]:
         if item.is_dir():
             children = entries_for(item, rel + "/")
             if children:
-                entries.append({name: children})
+                # 目录下只有同名 index.md 时，直接作为单页展示（避免双重嵌套）
+                if len(children) == 1 and list(children[0].keys()) == [name]:
+                    entries.append({name: children[0][name]})
+                else:
+                    entries.append({name: children})
         elif item.suffix == ".md" and item.name != "README.md":
             if item.name == "index.md":
                 label = prefix.rstrip("/").split("/")[-1] or name
