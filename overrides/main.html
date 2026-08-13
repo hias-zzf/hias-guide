@@ -30,6 +30,7 @@
   {% if page.is_homepage %}
     {{ page.content }}
     {% include "partials/page-meta.html" %}
+    {% include "partials/comments.html" %}
   {% else %}
     {{ super() }}
   {% endif %}

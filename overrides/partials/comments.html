@@ -1,0 +1,61 @@
+{#-
+  giscus 评论模块（GitHub Discussions 驱动，登录 GitHub 后即可评论）。
+  仅当 mkdocs.yml 的 extra.comments 配置完整且页面未设置 comments: false 时渲染。
+  主题会跟随 Material 的亮/暗色切换，并在 iframe 出现后立即同步。
+-#}
+{% set comments = config.extra.comments %}
+{% if comments and comments.enabled and comments.repo_id and comments.category_id %}
+  {% if not page.meta or page.meta.comments != false %}
+    <h2 id="comments">评论区</h2>
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+            data-repo="{{ comments.repo }}"
+            data-repo-id="{{ comments.repo_id }}"
+            data-category="{{ comments.category }}"
+            data-category-id="{{ comments.category_id }}"
+            data-mapping="{{ comments.mapping | default('pathname') }}"
+            data-strict="0"
+            data-reactions-enabled="{{ comments.reactions | default('1') }}"
+            data-emit-metadata="0"
+            data-input-position="{{ comments.input_position | default('bottom') }}"
+            data-theme="{{ comments.theme | default('preferred_color_scheme') }}"
+            data-lang="{{ comments.lang | default('zh-CN') }}"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <script>
+      (function () {
+        'use strict';
+        function currentTheme() {
+          var scheme = document.body.getAttribute('data-md-color-scheme');
+          return scheme === 'slate' ? 'dark' : 'light';
+        }
+        function sync() {
+          var frames = document.querySelectorAll('iframe.giscus-frame');
+          for (var i = 0; i < frames.length; i++) {
+            try {
+              frames[i].contentWindow.postMessage(
+                { giscus: { setConfig: { theme: currentTheme() } } },
+                'https://giscus.app'
+              );
+            } catch (e) {}
+          }
+        }
+        window.addEventListener('load', sync);
+        document.addEventListener('palette', sync);
+        new MutationObserver(sync).observe(document.body, {
+          attributes: true,
+          attributeFilter: ['data-md-color-scheme']
+        });
+        // giscus iframe 可能异步插入：监听 DOM 变化并轮询，直到 iframe 出现
+        new MutationObserver(sync).observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+        var timer = setInterval(sync, 500);
+        setTimeout(function () { clearInterval(timer); }, 10000);
+        sync();
+      })();
+    </script>
+  {% endif %}
+{% endif %}

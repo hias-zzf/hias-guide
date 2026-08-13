@@ -23,8 +23,9 @@ done
 
 python anonymize.py docs_src
 cp homepage.md docs_src/index.md
-python update_homepage.py docs_src/index.md "docs_src/智能学院/上岸经验分享"
-python update_homepage.py "docs_src/简介/index.md" "docs_src/智能学院/上岸经验分享"
+python update_homepage.py docs_src/index.md "docs_src/智能学院/上岸经验分享" --limit 6
+python update_homepage.py "docs_src/简介/index.md" "docs_src/智能学院/上岸经验分享" --limit 6
+python update_homepage.py "docs_src/智能学院/上岸经验分享/index.md" "docs_src/智能学院/上岸经验分享"
 
 python -m mkdocs build
 echo "构建完成：$(pwd)/site/index.html"

@@ -116,6 +116,7 @@ nav:
     - 生源与调剂: 智能学院/复试准备/生源与调剂.md
     - 联系导师: 智能学院/复试准备/联系导师.md
   - 上岸经验分享:
+    - 上岸经验分享: 智能学院/上岸经验分享/index.md
     - 26 985 真三无cs390: 智能学院/上岸经验分享/26 985 真三无cs390.md
     - 26 985科班 AI 397  复试90+经验贴: 智能学院/上岸经验分享/26 985科班 AI 397  复试90+经验贴.md
     - 26 985网安专业 CS 392经验贴: 智能学院/上岸经验分享/26 985网安专业 CS 392经验贴.md
@@ -149,6 +150,15 @@ nav:
 - 其它学院: 其它学院/index.md
 extra:
   generator: false
+  comments:
+    enabled: true
+    repo: hias-zzf/hias-guide
+    repo_id: R_kgDOT2QAIg
+    category: Announcements
+    category_id: DIC_kwDOT2QAIs4DDTBy
+    mapping: pathname
+    lang: zh-CN
+    theme: preferred_color_scheme
   social:
   - icon: material/earth
     name: 杭高院官网

@@ -69,12 +69,10 @@
     - 导师（工作室/组级）`1500/月`
     - **此外研一统一发放 `8000` 元补贴抵消学费**
 
-    所以算下来放假2个月发 `2200`，平时每月发 `3200`。这是低保基础工资，如果进组打工或者使用其它手段，可以获得更高的报酬。
-    
-    **研二会跟随导师到具体的研究所里，补贴也会随之变化**
 
 
-## 高起点、小而精的国科大直属二级学院 {: .guide-visually-hidden }
+
+### 高起点、小而精的国科大直属二级学院 {: .guide-visually-hidden }
 
 <section class="guide-section">
   <div class="guide-section__head">
@@ -115,7 +113,7 @@
   </div>
 </section>
 
-## 重点实验室与师资 {: .guide-visually-hidden }
+### 重点实验室与师资 {: .guide-visually-hidden }
 
 <section class="guide-section">
   <div class="guide-section__head">

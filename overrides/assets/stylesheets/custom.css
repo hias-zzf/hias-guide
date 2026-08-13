@@ -1329,3 +1329,8 @@ blockquote.page-copyright.md-page-meta i.md-icon {
 .md-social__link--named:hover .md-social__name {
   color: var(--md-footer-fg-color);
 }
+/* giscus comment module */
+.giscus,
+.giscus-frame {
+  width: 100%;
+}
