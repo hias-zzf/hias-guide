@@ -19,8 +19,8 @@
       xAxis: { type: 'category', data: d.categories },
       yAxis: { type: 'value', min: 0, max: 30, interval: 5, name: '人数' },
       series: [
-        { name: '复试人数', type: 'bar', data: d.fushi, barWidth: 24, label: { show: true, position: 'top' } },
-        { name: '拟录取人数', type: 'bar', data: d.niqu, barWidth: 24, label: { show: true, position: 'top' } }
+        { name: '复试人数', type: 'bar', data: d.fushi, barWidth: 24 },
+        { name: '拟录取人数', type: 'bar', data: d.niqu, barWidth: 24 }
       ]
     };
   }
@@ -44,27 +44,31 @@
         { type: 'value', name: '总分', min: 330, max: 370, gridIndex: 1 }
       ],
       series: [
-        { name: '02 方向', type: 'bar', data: d.s02, xAxisIndex: 0, yAxisIndex: 0, barWidth: 18, label: { show: true, position: 'top' } },
-        { name: '03 方向', type: 'bar', data: d.s03, xAxisIndex: 0, yAxisIndex: 0, barWidth: 18, label: { show: true, position: 'top' } },
-        { name: '02 方向', type: 'bar', data: [d.total02], xAxisIndex: 1, yAxisIndex: 1, barWidth: 30, label: { show: true, position: 'top' } },
-        { name: '03 方向', type: 'bar', data: [d.total03], xAxisIndex: 1, yAxisIndex: 1, barWidth: 30, label: { show: true, position: 'top' } }
+        { name: '02 方向', type: 'bar', data: d.s02, xAxisIndex: 0, yAxisIndex: 0, barWidth: 18 },
+        { name: '03 方向', type: 'bar', data: d.s03, xAxisIndex: 0, yAxisIndex: 0, barWidth: 18 },
+        { name: '02 方向', type: 'bar', data: [d.total02], xAxisIndex: 1, yAxisIndex: 1, barWidth: 30 },
+        { name: '03 方向', type: 'bar', data: [d.total03], xAxisIndex: 1, yAxisIndex: 1, barWidth: 30 }
       ]
     };
   }
 
-  function optionCurve(scores, title, color) {
+  function optionCombo(d, title) {
     return {
       title: { text: title, left: 'center', textStyle: { fontSize: 15 } },
-      color: [color],
-      tooltip: { trigger: 'axis' },
-      grid: { left: 55, right: 24, top: 72, bottom: 40 },
-      xAxis: { type: 'category', data: scores.map(function (_, i) { return i + 1; }), name: '拟录取名次（按总分降序）' },
-      yAxis: { type: 'value', name: '总分', scale: true },
-      series: [{
-        name: '总分', type: 'line', data: scores, smooth: true,
-        symbol: 'circle', symbolSize: 7, lineStyle: { width: 2 },
-        label: { show: true, position: 'top' }
-      }]
+      color: ['#4C72B0', '#DD8452', '#C0392B'],
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      legend: { data: ['复试人数', '录取人数', '录取概率'], top: 32 },
+      grid: { left: 55, right: 55, top: 72, bottom: 45 },
+      xAxis: { type: 'category', data: d.buckets, name: '初试总分' },
+      yAxis: [
+        { type: 'value', name: '人数', min: 0 },
+        { type: 'value', name: '录取概率', min: 0, max: 100, axisLabel: { formatter: '{value}%' } }
+      ],
+      series: [
+        { name: '复试人数', type: 'bar', data: d.fushi, yAxisIndex: 0, barWidth: 14 },
+        { name: '录取人数', type: 'bar', data: d.niqu, yAxisIndex: 0, barWidth: 14 },
+        { name: '录取概率', type: 'line', data: d.prob, yAxisIndex: 1, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 2.5 } }
+      ]
     };
   }
 
@@ -102,9 +106,9 @@
     }
     renderOne('wlgd-admission', optionAdmission(data.admission));
     renderOne('wlgd-avg', optionAvg(data.avg));
-    renderOne('wlgd-02-curve', optionCurve(data.s02, '02 方向拟录取总分曲线', '#4C72B0'));
-    renderOne('wlgd-03-curve', optionCurve(data.s03, '03 方向拟录取总分曲线', '#DD8452'));
-    return !!(instances['wlgd-admission'] && instances['wlgd-avg'] && instances['wlgd-02-curve'] && instances['wlgd-03-curve']);
+    renderOne('wlgd-02-combo', optionCombo(data.combo02, '02 方向初试总分分段统计'));
+    renderOne('wlgd-03-combo', optionCombo(data.combo03, '03 方向初试总分分段统计'));
+    return !!(instances['wlgd-admission'] && instances['wlgd-avg'] && instances['wlgd-02-combo'] && instances['wlgd-03-combo']);
   }
 
   var retryHandle = null;
