@@ -46,9 +46,12 @@ plugins:
     - en
 extra_css:
 - assets/stylesheets/custom.css
+- assets/stylesheets/leaflet.css
 extra_javascript:
 - assets/javascripts/echarts.min.js
 - assets/javascripts/wlgd-charts.js
+- assets/javascripts/leaflet.js
+- assets/javascripts/map.js
 markdown_extensions:
 - admonition
 - attr_list
