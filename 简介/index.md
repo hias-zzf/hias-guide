@@ -263,7 +263,7 @@
 <section class="guide-pledge">
   <h2 class="guide-visually-hidden">对杭高忠诚</h2>
   <button class="guide-pledge-btn" id="guide-pledge-btn" type="button">对杭高忠诚</button>
-  <p class="guide-pledge-hint">已有 <b class="guide-pledge-count">0</b> 位同学宣誓忠诚杭高院</p>
+  <p class="guide-pledge-hint">今日已有 <b class="guide-pledge-count">0</b> 位同学宣誓忠诚杭高院</p>
 </section>
 
 <div class="guide-pledge-overlay" id="guide-pledge-overlay" role="dialog" aria-modal="true" aria-labelledby="guide-pledge-result" tabindex="-1" hidden>
