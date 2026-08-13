@@ -47,6 +47,8 @@ NAV_ORDER: dict[str, list[str]] = {
     "物理与光电工程学院/拟录取信息": ["整体趋势", "26年拟录取信息", "25年拟录取信息"],
 }
 
+INDEX_LABELS: dict[str, str] = {"\u7b80\u4ecb": "\u6574\u4f53\u4ecb\u7ecd"}
+
 
 def entries_for(folder: Path, prefix: str) -> list[dict]:
     # 按文件夹完整路径（如 "智能学院/招生专业"）查 NAV_ORDER
@@ -74,6 +76,7 @@ def entries_for(folder: Path, prefix: str) -> list[dict]:
         elif item.suffix == ".md" and item.name != "README.md":
             if item.name == "index.md":
                 label = prefix.rstrip("/").split("/")[-1] or name
+                label = INDEX_LABELS.get(label, label)
                 entries.append({label: rel})
             else:
                 entries.append({item.stem: rel})

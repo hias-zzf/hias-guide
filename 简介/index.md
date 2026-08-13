@@ -9,8 +9,7 @@
 </div>
 
 <div class="guide-stats">
-  <div class="guide-stat guide-stat--compact"><b>360/315/330</b><span>AI智能/物光 一志愿复试线</span></div>
-  <div class="guide-stat"><b>335</b><span>CS 一志愿复试线</span></div>
+  <div class="guide-stat"><b>315</b><span>26年408最低分数线</span></div>
   <div class="guide-stat"><b>570</b><span>专硕招生计划</span></div>
   <div class="guide-stat"><b>A+</b><span>国科大计算机学科评估</span></div>
   <div class="guide-stat"><b>4.44万+</b><span>研一补助每年</span></div>
@@ -59,6 +58,20 @@
     </div>
   </div>
 </section>
+
+
+??? question "研究生补贴这么高，是由哪些部分组成的？"
+    - 国家助学金：`600/月`（2/8月不发）
+    - 中科院级补贴：`400/月`（2/8月不发）
+    - 杭高院（杭州市级）：`700/月` 
+    - 导师（工作室/组级）`1500/月`
+    **此外研一统一发放8000元补贴抵消学费**
+
+    所以算下来放假2个月发2200，平时每月发3200。这是低保基础工资，如果进组打工或者使用其它手段，可以获得更高的报酬。
+    
+    **研二会跟随导师到具体的研究所里，补贴也会随之变化**
+
+
 
 <section class="guide-section">
   <div class="guide-section__head">
