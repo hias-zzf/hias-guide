@@ -52,6 +52,8 @@ extra_javascript:
 - assets/javascripts/wlgd-charts.js
 - assets/javascripts/leaflet.js
 - assets/javascripts/map.js
+- assets/javascripts/intel-charts.js
+- assets/javascripts/guide-pledge.js
 markdown_extensions:
 - admonition
 - attr_list
@@ -137,6 +139,10 @@ nav:
     - 整体趋势: 物理与光电工程学院/拟录取信息/整体趋势/index.md
     - 26年拟录取信息: 物理与光电工程学院/拟录取信息/26年拟录取信息/index.md
     - 25年拟录取信息: 物理与光电工程学院/拟录取信息/25年拟录取信息/index.md
+  - 初试准备:
+    - 初试报考指南: 物理与光电工程学院/初试准备/初试报考指南.md
+  - 复试准备:
+    - 复试考核指南: 物理与光电工程学院/复试准备/复试考核指南.md
 - 其它学院: 其它学院/index.md
 extra:
   generator: false
