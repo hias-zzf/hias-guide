@@ -7,3 +7,5 @@ docs-old/
 __pycache__/
 *.pyc
 .DS_Store
+
+contributors.local.json

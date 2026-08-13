@@ -44,6 +44,9 @@ plugins:
     lang:
     - zh
     - en
+hooks:
+- revision_hook.py
+
 extra_css:
 - assets/stylesheets/custom.css
 - assets/stylesheets/leaflet.css

@@ -272,6 +272,4 @@
     <span class="guide-pledge-result" id="guide-pledge-result" role="status" aria-live="polite" aria-atomic="true">您是第 0 位宣誓者</span>
   </div>
 </div>
----
 
-<p>本站为考生公益维护，非官方渠道，内容仅供参考，请以杭高院及国科大官方发布为准 · 最后更新：2026 年 8 月</p>

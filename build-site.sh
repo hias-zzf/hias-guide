@@ -2,6 +2,9 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# 自动获取/复用已登录用户的 GitHub Token，写入 contributors.local.json
+python ensure_github_token.py
+
 if ! python -c "import material" 2>/dev/null; then
   python -m pip install -r requirements.txt
 fi

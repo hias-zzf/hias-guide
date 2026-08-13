@@ -1,0 +1,47 @@
+{#-
+  OI-wiki 风格正文底部元信息块（blockquote + 图标 + 无下划线链接）。
+-#}
+<blockquote class="page-copyright md-page-meta">
+  {% if page.meta and (page.meta.footer_revision_date or page.meta.footer_history_url) %}
+    <span>
+      <i class="md-icon">{% include ".icons/material/clock-edit-outline.svg" %}</i>本页面最近更新：
+    </span>
+    <span class="facts_modified">{{ page.meta.footer_revision_date }}</span>
+    {% if page.meta.footer_history_url %}
+      ，<a class="edit_history" href="{{ page.meta.footer_history_url }}" target="_blank" rel="noopener">更新历史</a>
+    {% endif %}
+    <br>
+  {% endif %}
+  {% if page.meta and page.meta.footer_edit_url %}
+    <span>
+      <i class="md-icon">{% include ".icons/material/pencil.svg" %}</i>发现错误？想一起完善？
+      <a class="page_edit_url" href="{{ page.meta.footer_edit_url }}" target="_blank" rel="noopener">在 GitHub 上编辑此页！</a>
+    </span>
+    <br>
+  {% endif %}
+  {% if page.meta and page.meta.footer_contributors %}
+    <span>
+      <i class="md-icon">{% include ".icons/material/account-group.svg" %}</i>本页面贡献者：
+    </span>
+    <span class="page_contributors">
+      {% for c in page.meta.footer_contributors %}
+        {% if not loop.first %}, {% endif %}
+        {% if c.url %}
+          <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.name }}</a>
+        {% else %}
+          <span>{{ c.name }}</span>
+        {% endif %}
+      {% endfor %}
+    </span>
+    <br>
+  {% endif %}
+  <span>
+    <i class="md-icon">{% include ".icons/material/copyright.svg" %}</i>本页面的全部内容在
+    <strong>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-SA 4.0</a>
+      和
+      <a href="https://github.com/zTrix/sata-license" target="_blank" rel="noopener">SATA</a>
+    </strong>
+    协议之条款下提供，附加条款亦可能应用
+  </span>
+</blockquote>

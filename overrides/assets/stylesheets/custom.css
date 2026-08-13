@@ -1274,3 +1274,26 @@ table.isc-score-table tbody tr:hover {
     animation: none;
   }
 }
+
+/* Page meta block, OI-wiki style: red-edged blockquote with icons */
+blockquote.page-copyright.md-page-meta {
+  margin: 20px 0 !important;
+  border-left-color: #ff1700 !important;
+}
+
+blockquote.page-copyright.md-page-meta i.md-icon {
+  display: inline-block;
+  margin-right: 5px;
+  transform: translateY(3.5px);
+  width: 18px;
+}
+
+.md-page-meta {
+  color: var(--md-default-fg-color--light);
+  font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.md-page-meta a {
+  text-decoration: none;
+}

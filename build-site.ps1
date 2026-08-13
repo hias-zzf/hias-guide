@@ -5,6 +5,9 @@
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
+# 自动获取/复用已登录用户的 GitHub Token，写入 contributors.local.json
+python ensure_github_token.py
+
 if (-not (python -c "import material" 2>$null)) {
     python -m pip install -r requirements.txt
 }
