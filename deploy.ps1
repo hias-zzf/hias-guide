@@ -37,4 +37,4 @@ if ($LASTEXITCODE -ne 0) { throw "build-site.ps1 构建失败" }
 # 3) 部署到 gh-pages
 python -m mkdocs gh-deploy
 if ($LASTEXITCODE -ne 0) { throw "mkdocs gh-deploy 部署失败" }
-Write-Host "部署完成：https://github.com/belugahust/hias-guide"
+Write-Host "部署完成：https://github.com/hias-zzf/hias-guide"
