@@ -55,6 +55,8 @@
 - 想了解**智能学院**（085404 计算机技术 / 085410 人工智能 / 085408 光电信息工程）→ [智能学院](../智能学院/整体介绍.md)
 - 想了解**物光学院**（085408 光电信息工程 / 085410 人工智能·小卫星联培与智能光电）→ [物理与光电工程学院](../物理与光电工程学院/整体介绍.md)
 - 想读**上岸经验**与备考攻略 → [初试准备](../智能学院/初试准备/初试报考指南.md) · [复试准备](../智能学院/复试准备/复试考核指南.md) · [上岸经验分享](#上岸经验分享)
+- **智能学院（CS/AI）考研交流群**（817445354）→ [点击加入](https://qun.qq.com/universal-share/share?ac=1&svctype=5&tempid=h5_group_info&busi_data=eyJncm91cENvZGUiOiI4MTc0NDUzNTQifQ%3D%3D)
+- **物光学院（AI）考研交流群**（633628213）→ [点击加入](https://qun.qq.com/universal-share/share?ac=1&svctype=5&tempid=h5_group_info&busi_data=eyJncm91cENvZGUiOiI2MzM2MjgyMTMifQ%3D%3D)
 
 ## 上岸经验分享
 

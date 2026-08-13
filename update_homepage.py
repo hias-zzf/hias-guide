@@ -9,10 +9,14 @@ from pathlib import Path
 from urllib.parse import quote
 
 
+KEYWORD_TAGS = ("双非", "跨考", "二战", "三无", "二本", "科班", "弱基础", "985", "211")
+
+
 def card_for(md_file: Path, prefix: str) -> str:
     text = md_file.read_text(encoding="utf-8")
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     title = md_file.stem
+    tag = next((kw for kw in KEYWORD_TAGS if kw in title), "经验")
     summary = ""
     for line in lines[1:]:
         cleaned = re.sub(r"^#{1,6}\s*", "", line)
@@ -24,7 +28,7 @@ def card_for(md_file: Path, prefix: str) -> str:
     href = f"{prefix}/{quote(md_file.stem)}/"
     return (
         '<a class="isc-exp-card" href="' + href + '">'
-        '<span class="isc-tag">经验</span>'
+        '<span class="isc-tag">' + tag + "</span>"
         '<span class="isc-exp-card__title">' + title + "</span>"
         "<p>" + summary + "</p>"
         "</a>"
