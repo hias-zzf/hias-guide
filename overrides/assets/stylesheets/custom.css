@@ -504,3 +504,9 @@ table.isc-score-table tbody tr:nth-child(even) {
 table.isc-score-table tbody tr:hover {
   background-color: var(--md-default-fg-color--lightest);
 }
+
+/* 地图图层置于底层，避免滚动时遮挡顶部导航/标签栏 */
+.techphys-map.leaflet-container {
+  position: relative;
+  z-index: 0;
+}
