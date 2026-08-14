@@ -1216,6 +1216,11 @@ table.isc-score-table tbody tr:hover {
   font-weight: 800;
 }
 
+.guide-pledge-total {
+  color: var(--isc-teal);
+  font-weight: 800;
+}
+
 .guide-pledge-overlay {
   align-items: center;
   background: rgba(8, 12, 26, 0.5);
