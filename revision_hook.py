@@ -13,11 +13,15 @@ Resolution strategy for contributor links:
 1. Local ``git log`` lists the authors of each file (fast, no API call per
    page).
 2. GitHub noreply e-mails directly yield the username.
-3. One global commits API call maps linked e-mails/names to ``author.login``.
-4. Unlinked authors are checked against ``https://github.com/<name>`` with an
+3. ``contributors.json`` manual overrides map a name/e-mail to a canonical
+   GitHub username (used offline as well).
+4. One global commits API call maps linked e-mails/names to ``author.login``.
+5. Unlinked authors are checked against ``https://github.com/<name>`` with an
    exact-match requirement, falling back to the search API if the core API is
    rate-limited.
-5. ``contributors.json`` provides manual overrides (used offline as well).
+
+Authors that resolve to no GitHub username are skipped, and a warning is
+printed to the build console instead of listing the raw Git name.
 
 No e-mail address is stored in this repository.
 
@@ -33,6 +37,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -253,8 +258,33 @@ def _apply_contributor_links(contributors: list[dict]) -> list[dict]:
     return contributors
 
 
+def _github_username_from_url(url: str) -> str | None:
+    """Extract a GitHub login from a ``https://github.com/<login>`` URL."""
+    if not url:
+        return None
+    marker = "github.com/"
+    pos = url.find(marker)
+    if pos < 0:
+        return None
+    login = url[pos + len(marker):].strip("/").split("/")[0]
+    return login or None
+
+
+def _link_username(name: str, email: str) -> str | None:
+    """Resolve a canonical GitHub username from ``contributors.json`` links."""
+    for key in (name.lower(), email.lower()):
+        login = _github_username_from_url(CONTRIBUTOR_LINKS.get(key, ""))
+        if login:
+            return login
+    return None
+
+
 def _contributors(repo_path: str, repo_url: str, branch: str) -> list[dict]:
-    """Return unique contributors, newest first."""
+    """Return unique contributors, newest first.
+
+    Authors that cannot be resolved to a GitHub username are skipped with a
+    warning on the build console instead of being listed under a raw name.
+    """
     owner_repo = _github_owner_repo(repo_url)
     remote_map = (
         _build_remote_author_map(owner_repo[0], owner_repo[1], branch)
@@ -263,9 +293,12 @@ def _contributors(repo_path: str, repo_url: str, branch: str) -> list[dict]:
     )
 
     seen: set[str] = set()
+    warned: set[str] = set()
     result: list[dict] = []
     for name, email in _local_authors(repo_path):
         username = _github_username(email)
+        if not username:
+            username = _link_username(name, email)
         if not username and email and email.lower() in remote_map:
             username = remote_map[email.lower()]
         if not username and name.lower() in remote_map:
@@ -273,15 +306,27 @@ def _contributors(repo_path: str, repo_url: str, branch: str) -> list[dict]:
         if not username:
             username = _github_profile_login(name)
 
-        display = username or name
-        key = display.lower()
+        if not username:
+            warn_key = f"{name}|{email}"
+            if warn_key not in warned:
+                warned.add(warn_key)
+                print(
+                    f"[revision_hook] WARNING: cannot resolve a GitHub username "
+                    f"for author {name!r} <{email}>; this contributor is "
+                    f"skipped. Add a mapping in contributors.json to include "
+                    f"them.",
+                    file=sys.stderr,
+                )
+            continue
+
+        key = username.lower()
         if key in seen:
             continue
         seen.add(key)
         result.append(
             {
-                "name": display,
-                "url": f"https://github.com/{username}" if username else "",
+                "name": username,
+                "url": f"https://github.com/{username}",
             }
         )
     return _apply_contributor_links(result)
