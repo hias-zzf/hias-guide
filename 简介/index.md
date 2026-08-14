@@ -262,3 +262,18 @@
   </div>
 </div>
 
+## 相关站点 {: .guide-visually-hidden }
+
+<section class="guide-section" id="相关站点">
+  <div class="guide-section__head">
+    <span class="guide-section__kicker">相关站点</span>
+    <h2>兄弟院校报考指南</h2>
+    <p>中科院体系内兄弟单位的报考指南站，供择校对比参考。</p>
+  </div>
+  <div class="isc-links">
+    <a class="isc-btn isc-btn--soft" href="https://guide.iscas.win/" target="_blank" rel="noopener">中科院软件所报考指南 →</a>
+    <a class="isc-btn isc-btn--soft" href="https://iie.cskaoyan.cn" target="_blank" rel="noopener">中科院信工所报考指南 →</a>
+    <a class="isc-btn isc-btn--soft" href="https://sict.cskaoyan.cn" target="_blank" rel="noopener">中科院沈计所报考指南 →</a>
+    <a class="isc-btn isc-btn--soft" href="https://ucas-bgi.cskaoyan.cn" target="_blank" rel="noopener">中科院人工智能学院报考指南 →</a>
+  </div>
+</section>
