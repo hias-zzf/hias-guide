@@ -119,6 +119,46 @@
     };
   }
 
+  function optionRetestSplit(d) {
+    return {
+      title: { text: '2025 年复试人数与拟录取人数对比', left: 'center', textStyle: { fontSize: 15 } },
+      color: ['#4C72B0', '#DD8452', '#C0392B'],
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      legend: { data: ['复试人数', '拟录取人数', '未录取人数'], top: 32 },
+      grid: { left: 55, right: 24, top: 72, bottom: 40 },
+      xAxis: { type: 'category', data: d.categories },
+      yAxis: { type: 'value', minInterval: 1, name: '人数' },
+      series: [
+        { name: '复试人数', type: 'bar', data: d.fushi, barWidth: 22 },
+        { name: '拟录取人数', type: 'bar', data: d.niqu, barWidth: 22 },
+        { name: '未录取人数', type: 'bar', data: d.weilu, barWidth: 22 }
+      ]
+    };
+  }
+
+  function optionRetestPie(d) {
+    return {
+      title: { text: '2025 年拟录取 / 未录取占比', left: 'center', textStyle: { fontSize: 15 } },
+      color: ['#4C72B0', '#C0392B'],
+      tooltip: { trigger: 'item', formatter: '{b}<br/>{c} 人（{d}%）' },
+      legend: { data: d.categories, bottom: 10 },
+      series: [
+        {
+          name: '录取情况',
+          type: 'pie',
+          radius: ['38%', '62%'],
+          center: ['50%', '46%'],
+          avoidLabelOverlap: true,
+          itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+          label: { formatter: '{b}\n{c} 人' },
+          data: d.categories.map(function (name, i) {
+            return { name: name, value: d.values[i] };
+          })
+        }
+      ]
+    };
+  }
+
   function disposeAll() {
     for (var k in instances) {
       try { instances[k].dispose(); } catch (e) {}
@@ -161,7 +201,14 @@
       renderOne('intel-employment-split', optionEmploymentSplit(data.employment.split));
       renderOne('intel-employment-dest', optionEmploymentDest(data.employment.dest));
     }
-    return !!(instances['intel-admission'] && instances['intel-avg'] && instances['intel-ai-combo'] && instances['intel-cs-combo']);
+    if (data.retest) {
+      renderOne('intel-25-split', optionRetestSplit(data.retest.split));
+      renderOne('intel-25-pie', optionRetestPie(data.retest.pie));
+    }
+    var mainCharts = instances['intel-admission'] && instances['intel-avg'] && instances['intel-ai-combo'] && instances['intel-cs-combo'];
+    var employmentCharts = instances['intel-employment-split'] && instances['intel-employment-dest'];
+    var retestCharts = instances['intel-25-split'] && instances['intel-25-pie'];
+    return !!(mainCharts || employmentCharts || retestCharts);
   }
 
   var retryHandle = null;
