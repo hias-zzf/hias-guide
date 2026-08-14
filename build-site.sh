@@ -2,6 +2,12 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# Cloudflare Pages 默认浅克隆，先补全 Git 历史才能算出完整贡献者列表
+if [ "$(git rev-parse --is-shallow-repository 2>/dev/null)" = "true" ]; then
+  echo "检测到浅克隆，拉取完整 Git 历史..."
+  git fetch --unshallow
+fi
+
 # 自动获取/复用已登录用户的 GitHub Token，写入 contributors.local.json
 python ensure_github_token.py
 
