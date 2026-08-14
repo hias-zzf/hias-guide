@@ -72,6 +72,53 @@
     };
   }
 
+  function optionEmploymentSplit(d) {
+    return {
+      title: { text: '2024 届毕业去向占比', left: 'center', textStyle: { fontSize: 15 } },
+      color: ['#4C72B0', '#DD8452'],
+      tooltip: { trigger: 'item', formatter: '{b}<br/>{c} 人（{d}%）' },
+      legend: { data: d.categories, bottom: 10 },
+      series: [
+        {
+          name: '毕业去向',
+          type: 'pie',
+          radius: ['38%', '62%'],
+          center: ['50%', '46%'],
+          avoidLabelOverlap: true,
+          itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+          label: { formatter: '{b}\n{c} 人' },
+          data: d.categories.map(function (name, i) {
+            return { name: name, value: d.values[i] };
+          })
+        }
+      ]
+    };
+  }
+
+  function optionEmploymentDest(d) {
+    var items = d.companies.map(function (name, i) {
+      return { name: name, value: d.counts[i] };
+    }).sort(function (a, b) { return a.value - b.value; });
+    return {
+      title: { text: '2024 届就业单位分布', left: 'center', textStyle: { fontSize: 15 } },
+      color: ['#4C72B0'],
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: '{b}<br/>{c} 人' },
+      grid: { left: 110, right: 30, top: 60, bottom: 30 },
+      xAxis: { type: 'value', minInterval: 1, name: '人数' },
+      yAxis: { type: 'category', data: items.map(function (x) { return x.name; }) },
+      series: [
+        {
+          name: '人数',
+          type: 'bar',
+          data: items.map(function (x) { return x.value; }),
+          barWidth: 16,
+          itemStyle: { borderRadius: [0, 4, 4, 0] },
+          label: { show: true, position: 'right', formatter: '{c} 人' }
+        }
+      ]
+    };
+  }
+
   function disposeAll() {
     for (var k in instances) {
       try { instances[k].dispose(); } catch (e) {}
@@ -104,10 +151,16 @@
       disposeAll();
       return true;
     }
-    renderOne('intel-admission', optionAdmission(data.admission));
-    renderOne('intel-avg', optionAvg(data.avg));
-    renderOne('intel-ai-combo', optionCombo(data.comboAI, 'AI 初试总分分段统计'));
-    renderOne('intel-cs-combo', optionCombo(data.comboCS, 'CS 初试总分分段统计'));
+    if (data.admission && data.avg && data.comboAI && data.comboCS) {
+      renderOne('intel-admission', optionAdmission(data.admission));
+      renderOne('intel-avg', optionAvg(data.avg));
+      renderOne('intel-ai-combo', optionCombo(data.comboAI, 'AI 初试总分分段统计'));
+      renderOne('intel-cs-combo', optionCombo(data.comboCS, 'CS 初试总分分段统计'));
+    }
+    if (data.employment) {
+      renderOne('intel-employment-split', optionEmploymentSplit(data.employment.split));
+      renderOne('intel-employment-dest', optionEmploymentDest(data.employment.dest));
+    }
     return !!(instances['intel-admission'] && instances['intel-avg'] && instances['intel-ai-combo'] && instances['intel-cs-combo']);
   }
 
