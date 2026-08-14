@@ -354,6 +354,25 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+/* 宿舍实拍图集 */
+.dorm-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 1rem 0 0.6rem;
+}
+
+.dorm-grid img {
+  background: var(--isc-card);
+  border: 1px solid var(--isc-line);
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
 .isc-exp-card {
   background: var(--isc-card);
   border: 1px solid var(--isc-line);
