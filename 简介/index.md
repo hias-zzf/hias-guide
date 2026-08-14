@@ -12,7 +12,7 @@
   <div class="guide-stat"><b>315</b><span>26年408最低分数线</span></div>
   <div class="guide-stat"><b>570</b><span>专硕招生计划</span></div>
   <div class="guide-stat"><b>A+</b><span>国科大计算机学科评估</span></div>
-  <div class="guide-stat"><b>4.44万+</b><span>研一补助每年</span></div>
+  <div class="guide-stat"><b>4.44万+</b><span>研一补助最低</span></div>
   <div class="guide-stat"><b>免学费</b><span>8000 元学费返还</span></div>
 </div>
 
