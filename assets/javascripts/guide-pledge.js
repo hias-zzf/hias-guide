@@ -5,8 +5,11 @@
   var NAMESPACE = 'hias-guide-pledge';
   var COUNT_KEY = 'hias_guide_pledge_shared_count';
   var DAY_KEY = 'hias_guide_pledge_shared_date';
+  var TOTAL_KEY = 'total';
+  var TOTAL_COUNT_KEY = 'hias_guide_pledge_shared_total';
   var attached = false;
   var count = 0;
+  var total = 0;
 
   function init() {
     var btn = document.getElementById('guide-pledge-btn');
@@ -19,10 +22,19 @@
     var pledging = false;
 
     count = parseInt(localStorage.getItem(COUNT_KEY) || '0', 10) || 0;
+    total = parseInt(localStorage.getItem(TOTAL_COUNT_KEY) || '0', 10) || 0;
 
     function setCount(n) {
       count = n;
       var nodes = document.querySelectorAll('.guide-pledge-count');
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].textContent = String(n);
+      }
+    }
+
+    function setTotal(n) {
+      total = n;
+      var nodes = document.querySelectorAll('.guide-pledge-total');
       for (var i = 0; i < nodes.length; i++) {
         nodes[i].textContent = String(n);
       }
@@ -73,13 +85,19 @@
     }
 
     function loadSharedCount() {
-      fetchValue('get', todayString()).then(function (value) {
-        localStorage.setItem(COUNT_KEY, String(value));
-        setCount(value);
+      Promise.all([
+        fetchValue('get', todayString()),
+        fetchValue('get', TOTAL_KEY)
+      ]).then(function (values) {
+        localStorage.setItem(COUNT_KEY, String(values[0]));
+        setCount(values[0]);
+        localStorage.setItem(TOTAL_COUNT_KEY, String(values[1]));
+        setTotal(values[1]);
       }).catch(function () {});
     }
 
     setCount(count);
+    setTotal(total);
     loadSharedCount();
 
     if (overlay) {
@@ -111,12 +129,18 @@
         localStorage.setItem(DAY_KEY, today);
         localStorage.setItem(COUNT_KEY, String(value));
         setCount(value);
+        return fetchValue('hit', TOTAL_KEY);
+      }).then(function (totalValue) {
+        localStorage.setItem(TOTAL_COUNT_KEY, String(totalValue));
+        setTotal(totalValue);
         if (result) {
-          result.innerHTML = '您是今天第 <b>' + value + '</b> 位忠诚者';
+          result.innerHTML = '您是今天第 <b>' + count + '</b> 位忠诚者，累计第 <b>' + totalValue + '</b> 位';
         }
         showOverlay();
       }).catch(function () {
-        if (result) {
+        if (localStorage.getItem(DAY_KEY) === today && result) {
+          result.innerHTML = '您是今天第 <b>' + count + '</b> 位忠诚者，累计数据暂未更新';
+        } else if (result) {
           result.innerHTML = '网络连接失败，请稍后再试';
         }
         showOverlay();
