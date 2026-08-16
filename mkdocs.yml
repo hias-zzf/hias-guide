@@ -1,6 +1,6 @@
 site_name: 国科大杭州高等研究院报考指南
 site_description: 非官方公益报考指南，介绍杭州高等研究院（杭高院）及其二级学院，汇总报考、复试、培养与上岸经验
-repo_url: https://github.com/hias-zzf/hias-guide
+repo_url: https://github.com/ucas-cskaoyan-web/hias-guide
 repo_name: hias-guide
 edit_uri: edit/main/
 docs_dir: docs_src
@@ -159,7 +159,7 @@ extra:
   generator: false
   comments:
     enabled: true
-    repo: hias-zzf/hias-guide
+    repo: ucas-cskaoyan-web/hias-guide
     repo_id: R_kgDOT2QAIg
     category: Announcements
     category_id: DIC_kwDOT2QAIs4DDTBy
