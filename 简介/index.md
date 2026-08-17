@@ -249,8 +249,9 @@
   </div>
 </div>
 
-<section class="guide-pledge">
+<section class="guide-pledge" id="对杭高忠诚">
   <h2 class="guide-visually-hidden">对杭高忠诚</h2>
+  <p class="guide-pledge-wish">无论你是否选择杭高院，都祝福大家备考顺利！</p>
   <button class="guide-pledge-btn" id="guide-pledge-btn" type="button">对杭高忠诚</button>
   <p class="guide-pledge-hint">今日已有 <b class="guide-pledge-count">0</b> 位同学宣誓忠诚杭高院，累计已有 <b class="guide-pledge-total">0</b> 位</p>
 </section>

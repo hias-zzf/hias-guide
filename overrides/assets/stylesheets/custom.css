@@ -1180,6 +1180,13 @@ table.isc-score-table tbody tr:hover {
   text-align: center;
 }
 
+.guide-pledge-wish {
+  color: var(--isc-text);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1.1rem;
+}
+
 .guide-pledge-btn {
   align-items: center;
   background: var(--isc-teal);
